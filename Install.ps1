@@ -30,7 +30,7 @@ if ($OSArch.OSArchitecture -eq '64 bits')
 cd $installDir
 $BGInfoZip=Join-Path $installDir 'BGInfo.zip'
 Download-File $BGInfoURL $BGInfoZip
-
+Write-Host "$7zaExe"
 Download-File $7zURL "$7zaExe"
 Write-Host -ForegroundColor Green Extract Files
 Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$BGInfoZip`"" -Wait -NoNewWindow
