@@ -1,5 +1,8 @@
 Write-Host -ForegroundColor 'GREEN' Download Git
 # Configuration
+$unzipMethod = '7zip'
+$7ZURL= 'https://chocolatey.org/7za.exe'
+
 $installDir = Join-Path $env:temp 'winfirstboot'
 New-Item $installDir -type directory
 
@@ -18,3 +21,6 @@ if ($OSArch.OSArchitecture -eq '64 bits')
 $file = "$installDir\PortableGit.7z.exe"
 $webclient.DownloadFile($url,$file)
 
+Write-Output "Download 7Zip commandline tool"
+  $7zaExe = Join-Path $tempDir '7za.exe'
+  Download-File $7zURL "$7zaExe"
