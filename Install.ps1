@@ -12,12 +12,12 @@ function Download-File {
 	Start-BitsTransfer $url $file
 }
 # Configuration
+$installDir = Join-Path $env:temp 'winfirstboot'
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
 $7zURL= "$RepoURLApps/7za.exe"
 $7zaExe = Join-Path $installDir '7za.exe'
 
-$installDir = Join-Path $env:temp 'winfirstboot'
 New-Item $installDir -type directory
 
 # Check OS Architecture 
