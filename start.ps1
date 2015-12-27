@@ -18,4 +18,4 @@ $InstallFileURL = $RepoURL + 'Install.ps1'
 $InstallFile = Join-Path $installDir 'install.ps1'
 Download-File $InstallFileURL $InstallFile
 
-Invoke-Item (start powershell ($InstallFile))
+. $InstallFile
