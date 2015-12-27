@@ -25,6 +25,8 @@ $objShortcut.Save()
 $BGInfoFinalFolder = $strAllUsersProfile + "\Documents\BGInfo\"
 New-Item $BGInfoFinalFolder -type directory
 $BGInfoFinalExe = $BGInfoFinalFolder + "BGInfo.exe"
+$BGInfoFinalPS1URL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/BGInfo.ps1"
+$BGInfoFinalPS1 = $BGInfoFinalFolder + "BGInfo.ps1"
 
 New-Item $installDir -type directory
 
@@ -46,4 +48,6 @@ Write-Host -ForegroundColor Yellow Copying BGInfo.exe to $BGInfoFinalExe
 
 # Creation of Task Job
 $trigger = New-JobTrigger -AtStartup -RandomDelay 00:00:30
+Download-File $BGInfoFinalPS1URL $BGInfoFinalPS1
 Register-ScheduledJob -Trigger $trigger -FilePath $BGInfoFinalExe -Name BGInfo
+
