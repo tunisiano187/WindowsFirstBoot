@@ -54,3 +54,4 @@ Download-File $BGInfoBGIURL $BGInfoBGI
 
 # Creation of Task Job
 schtasks /create /tn BGInfo /tr "$BGInfoFinalExe $BGInfoBGI"  /sc onlogon
+Write-host "$BGInfoFinalExe $BGInfoBGI"
