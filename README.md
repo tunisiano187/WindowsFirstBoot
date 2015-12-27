@@ -6,4 +6,4 @@ Test if we are running in a virtual environment under VMWare and install VMWare 
 
 Run this line in a command line executed with administrator rights
 
-@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/tunisiano187/WindowsFirstBoot/master/Install.ps1'))"
+@powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/tunisiano187/WindowsFirstBoot/master/start.ps1'))"

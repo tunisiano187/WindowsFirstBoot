@@ -1,4 +1,4 @@
-Write-Host -ForegroundColor 'GREEN' Download Git
+Write-Host -ForegroundColor 'GREEN' Windows Preparation
 # Functions
 function Download-File {
 	param (
