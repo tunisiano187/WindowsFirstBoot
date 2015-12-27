@@ -15,7 +15,7 @@ function Download-File {
 $installDir = Join-Path $env:temp 'winfirstboot'
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
-$7zURL= "$RepoURLApps/7za.exe"
+$7zURL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/7za.exe"
 $7zaExe = Join-Path $installDir '7za.exe'
 
 New-Item $installDir -type directory
