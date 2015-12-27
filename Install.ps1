@@ -17,6 +17,7 @@ $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
 $BGInfoBGIURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/template.bgi'
 $7zURL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/7za.exe"
+$7zURL= "http://sourceforge.net/projects/sevenzip/files/7-Zip/15.12/7z1512.exe/download"
 $7zaExe = Join-Path $installDir '7za.exe'
 $strAllUsersProfile = [io.path]::GetFullPath($env:AllUsersProfile)
 $objShell = New-Object -com "Wscript.Shell"
