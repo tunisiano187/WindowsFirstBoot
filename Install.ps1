@@ -16,8 +16,8 @@ $7zURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/7za.ex
 $installDir = Join-Path $env:temp 'winfirstboot'
 New-Item $installDir -type directory
 
-$url = 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-32-bit.7z.exe'
-$url64 = 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-64-bit.7z.exe'
+$url = 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/PortableGit32.zip'
+$url64 = 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/PortableGit64.zip'
 
 # Check OS Architecture 
 $OSArch =Get-WmiObject Win32_OperatingSystem  | select OSArchitecture
@@ -27,10 +27,13 @@ if ($OSArch.OSArchitecture -eq '64 bits')
 {
   $url = $url64
 }
-Write-Host "Download Git Portable 7z"
-$GitExe = Join-Path $installDir 'PortableGit.7z.exe'
-Download-File $url "$GitExe"
+Write-Host "Download Git Portable zip"
+$GitZip = Join-Path $installDir 'PortableGit.zip'
+Download-File $url "$GitZip"
 
 Write-Host "Download 7Zip commandline tool"
 $7zaExe = Join-Path $installDir '7za.exe'
 Download-File $7zURL "$7zaExe"
+
+Write-Host -ForegroundColor Green Extract Files
+Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$GitZip`"" -Wait -NoNewWindow
