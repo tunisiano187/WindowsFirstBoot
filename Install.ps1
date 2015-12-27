@@ -20,13 +20,13 @@ $7zaExe = Join-Path $installDir '7za.exe'
 $strAllUsersProfile = [io.path]::GetFullPath($env:AllUsersProfile)
 $objShell = New-Object -com "Wscript.Shell"
 $objShortcut = $objShell.CreateShortcut($strAllUsersProfile + "\Start Menu\Programs\Startup\BGInfo.lnk")
-$objShortcut.TargetPath = ""
-$objShortcut.Save()
-$BGInfoFinalFolder = $strAllUsersProfile + "\Documents\BGInfo\"
+$BGInfoFinalFolder = $strAllUsersProfile + "\BGInfo\"
 New-Item $BGInfoFinalFolder -type directory
 $BGInfoFinalExe = $BGInfoFinalFolder + "BGInfo.exe"
 $BGInfoFinalPS1URL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/BGInfo.ps1"
 $BGInfoFinalPS1 = $BGInfoFinalFolder + "BGInfo.ps1"
+$objShortcut.TargetPath = $BGInfoFinalExe
+$objShortcut.Save()
 
 New-Item $installDir -type directory
 
