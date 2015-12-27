@@ -15,6 +15,7 @@ function Download-File {
 $installDir = Join-Path $env:temp 'winfirstboot'
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
+$BGInfoBGIURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/template.bgi'
 $7zURL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/7za.exe"
 $7zaExe = Join-Path $installDir '7za.exe'
 $strAllUsersProfile = [io.path]::GetFullPath($env:AllUsersProfile)
@@ -23,6 +24,7 @@ $objShortcut = $objShell.CreateShortcut($strAllUsersProfile + "\Start Menu\Progr
 $BGInfoFinalFolder = $strAllUsersProfile + "\BGInfo\"
 New-Item $BGInfoFinalFolder -type directory
 $BGInfoFinalExe = $BGInfoFinalFolder + "BGInfo.exe"
+$BGInfoBGI= $BGInfoFinalFolder + "template.bgi"
 $BGInfoFinalPS1URL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/BGInfo.ps1"
 $BGInfoFinalPS1 = $BGInfoFinalFolder + "BGInfo.ps1"
 $objShortcut.TargetPath = $BGInfoFinalExe
@@ -47,5 +49,8 @@ Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$BGInfoZip`"" -W
 Write-Host -ForegroundColor Yellow Copying Bginfo.exe to $BGInfoFinalExe
 Copy-Item "$installDir\Bginfo.exe" $BGInfoFinalExe
 
+# Configuration of BGInfo
+Download-File $BGInfoBGIURL $BGInfoBGI
+
 # Creation of Task Job
-schtasks /create /tn BGInfo /tr $BGInfoFinalExe  /sc onlogon
+schtasks /create /tn BGInfo /tr "$BGInfoFinalExe template.bgi"  /sc onlogon
