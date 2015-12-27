@@ -11,7 +11,7 @@ function Download-File {
 }
 # Configuration
 $installDir = Join-Path $env:temp 'winfirstboot'
-$installDirFiles = Join-Path $installDir "\*"
+$installDirFiles = Join-Path "$installDir\*"
 Remove-Item $installDirFiles -recurse
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $InstallFileURL = $RepoURL + 'Install.ps1'
