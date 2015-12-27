@@ -45,8 +45,7 @@ Download-File $7zURL "$7zaExe"
 Write-Host -ForegroundColor Green Extract BGInfo Files
 Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$BGInfoZip`"" -Wait -NoNewWindow
 Write-Host -ForegroundColor Yellow Copying BGInfo.exe to $BGInfoFinalExe
+Copy-Item "$installDir\BGInfo\BGInfo.exe" $BGInfoFinalExe
 
 # Creation of Task Job
-$trigger = New-JobTrigger -AtStartup -RandomDelay 00:00:30
-Download-File $BGInfoFinalPS1URL $BGInfoFinalPS1
 schtasks /create /tn BGInfo /tr $BGInfoFinalExe  /sc onlogon
