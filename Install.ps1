@@ -37,3 +37,8 @@ Download-File $7zURL "$7zaExe"
 
 Write-Host -ForegroundColor Green Extract Files
 Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$GitZip`"" -Wait -NoNewWindow
+
+cd $installDir
+PortableGit\cmd\git.exe clone https://github.com/tunisiano187/WindowsFirstBoot.git
+
+
