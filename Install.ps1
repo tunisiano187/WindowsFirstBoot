@@ -14,6 +14,8 @@ function Download-File {
 # Configuration
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
+$7zURL= "$RepoURL/Apps/7za.exe"
+$7zaExe = Join-Path $installDir '7za.exe'
 
 $installDir = Join-Path $env:temp 'winfirstboot'
 New-Item $installDir -type directory
@@ -29,3 +31,6 @@ cd $installDir
 $BGInfoZip=Join-Path $installDir 'BGInfo.zip'
 Download-File $BGInfoURL $BGInfoZip
 
+Download-File $7zURL "$7zaExe"
+Write-Host -ForegroundColor Green Extract Files
+Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$BGInfoZip`"" -Wait -NoNewWindow
