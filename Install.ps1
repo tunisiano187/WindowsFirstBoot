@@ -59,7 +59,7 @@ Write-host "$BGInfoFinalExe $BGInfoBGI"
 #################### Installation of VMWare tools
 # Detection if we are on VMWare Server
 
-$wmibios = Get-WmiObject Win32_BIOS @WMISplat -ErrorAction Stop | Select-Object version,serialnumber
+$wmibios = Get-WmiObject Win32_BIOS -ErrorAction Stop | Select-Object version,serialnumber
 if ($wmibios.SerialNumber -like "*VMware*") {
 # If we are on VMWare then install vmware Tools
 	$VMWareTools='https://packages.vmware.com/tools/esx/latest/windows/x64/VMware-tools-9.10.5-2981885-x86_64.exe'
