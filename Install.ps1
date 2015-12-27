@@ -49,5 +49,4 @@ Write-Host -ForegroundColor Yellow Copying BGInfo.exe to $BGInfoFinalExe
 # Creation of Task Job
 $trigger = New-JobTrigger -AtStartup -RandomDelay 00:00:30
 Download-File $BGInfoFinalPS1URL $BGInfoFinalPS1
-Register-ScheduledJob -Trigger $trigger -FilePath $BGInfoFinalPS1 -Name BGInfo
-
+schtasks /create /tn BGInfo /tr $BGInfoFinalExe  /sc onlogon
