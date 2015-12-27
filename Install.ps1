@@ -1,6 +1,8 @@
 Write-Host -ForegroundColor 'GREEN' Download Git
 # Configuration
 $installDir = Join-Path $env:temp 'winfirstboot'
+New-Item $installDir -type directory
+
 $url = 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-32-bit.7z.exe'
 $url64 = 'https://github.com/git-for-windows/git/releases/download/v2.6.4.windows.1/PortableGit-2.6.4-64-bit.7z.exe'
 
@@ -16,4 +18,5 @@ if ($OSArch.OSArchitecture -eq '64 bits')
 $file = "$installDir\PortableGit.7z.exe"
 #$webclient.DownloadFile($url,$file)
 
+Write-Host $env:temp
 Write-Host $installDir
