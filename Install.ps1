@@ -14,4 +14,4 @@ if ($OSArch.OSArchitecture -eq '64 bits')
   $url = $url64
 }
 $file = "$installDir\PortableGit.7z.exe"
-$webclient.DownloadFile($url,$file)
+# $webclient.DownloadFile($url,$file)
