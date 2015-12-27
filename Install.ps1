@@ -53,4 +53,4 @@ Copy-Item "$installDir\Bginfo.exe" $BGInfoFinalExe
 Download-File $BGInfoBGIURL $BGInfoBGI
 
 # Creation of Task Job
-schtasks /create /tn BGInfo /tr "$BGInfoFinalExe template.bgi"  /sc onlogon
+schtasks /create /tn BGInfo /tr "$BGInfoFinalExe $BGInfoBGI"  /sc onlogon
