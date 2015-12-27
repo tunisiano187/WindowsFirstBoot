@@ -17,6 +17,14 @@ $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
 $7zURL= "https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/7za.exe"
 $7zaExe = Join-Path $installDir '7za.exe'
+$strAllUsersProfile = [io.path]::GetFullPath($env:AllUsersProfile)
+$objShell = New-Object -com "Wscript.Shell"
+$objShortcut = $objShell.CreateShortcut($strAllUsersProfile + "\Start Menu\Programs\Startup\BGInfo.lnk")
+$objShortcut.TargetPath = ""
+$objShortcut.Save()
+$BGInfoFinalFolder = $strAllUsersProfile + "\Documents\BGInfo\"
+New-Item $BGInfoFinalFolder -type directory
+$BGInfoFinalExe = $BGInfoFinalFolder + "BGInfo.exe"
 
 New-Item $installDir -type directory
 
@@ -32,5 +40,10 @@ $BGInfoZip=Join-Path $installDir 'BGInfo.zip'
 Download-File $BGInfoURL $BGInfoZip
 Write-Host "$7zaExe"
 Download-File $7zURL "$7zaExe"
-Write-Host -ForegroundColor Green Extract Files
+Write-Host -ForegroundColor Green Extract BGInfo Files
 Start-Process "$7zaExe" -ArgumentList "x -o`"$installDir`" -y `"$BGInfoZip`"" -Wait -NoNewWindow
+Write-Host -ForegroundColor Yellow Copying BGInfo.exe to $BGInfoFinalExe
+
+# Creation of Task Job
+$trigger = New-JobTrigger -AtStartup -RandomDelay 00:00:30
+Register-ScheduledJob -Trigger $trigger -FilePath $BGInfoFinalExe -Name BGInfo
