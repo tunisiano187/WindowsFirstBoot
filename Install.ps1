@@ -13,6 +13,7 @@ function Download-File {
 }
 # Configuration
 $installDir = Join-Path $env:temp 'winfirstboot'
+New-Item $installDir -type directory
 $RepoURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/'
 $BGInfoURL='https://download.sysinternals.com/files/BGInfo.zip'
 $BGInfoBGIURL= 'https://github.com/tunisiano187/WindowsFirstBoot/raw/master/Apps/template.bgi'
